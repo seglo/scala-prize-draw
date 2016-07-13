@@ -11,16 +11,16 @@ object ScalaPrizeDraw {
   val random = new Random
   var winners = Set[String]()
 
-  def main (args: Array[String]) {
-    1 to conf.raffleCount foreach { _ => nextWinner }
+  def main(args: Array[String]) {
+    1 to conf.raffleCount foreach { _ => nextWinner() }
   }
 
-  def reset = winners = Set[String]()
+  def reset() = winners = Set[String]()
 
   /*
     Randomly select a new winner from the set of RSVP's
    */
-  def nextWinner = {
+  def nextWinner() = {
     val rsvpSet = rsvps.toSet
     if (rsvpSet.size - winners.size == 0) println("No more winners!")
     else {
